@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.student.StudentDashboardController"
+            fitToWidth="true" styleClass="page-scroll">
+    <VBox styleClass="page">
+        <VBox spacing="2">
+            <Label fx:id="welcomeLabel" styleClass="section-title"/>
+            <Label fx:id="summaryLabel" styleClass="section-subtitle" wrapText="true"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="My courses" styleClass="section-title"/>
+            <FlowPane fx:id="courseTiles" hgap="12" vgap="12"/>
+        </VBox>
+
+        <HBox spacing="18">
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" minWidth="320">
+                <Label text="Upcoming deadlines" styleClass="section-title"/>
+                <Label fx:id="deadlineZoneLabel" styleClass="field-hint" wrapText="true"/>
+                <VBox fx:id="deadlineList"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" minWidth="320">
+                <Label text="Recently graded" styleClass="section-title"/>
+                <VBox fx:id="gradedList"/>
+            </VBox>
+        </HBox>
+
+        <VBox styleClass="card">
+            <Label text="Recent announcements" styleClass="section-title"/>
+            <VBox fx:id="announcementList"/>
+        </VBox>
+    </VBox>
+</ScrollPane>

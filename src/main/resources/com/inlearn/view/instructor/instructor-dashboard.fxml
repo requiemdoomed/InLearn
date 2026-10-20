@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.instructor.InstructorDashboardController"
+            fitToWidth="true" styleClass="page-scroll">
+    <VBox styleClass="page">
+        <VBox spacing="2">
+            <Label fx:id="welcomeLabel" styleClass="section-title"/>
+            <Label text="Your teaching at a glance." styleClass="section-subtitle"/>
+        </VBox>
+
+        <FlowPane hgap="16" vgap="16">
+            <VBox styleClass="stat-card">
+                <Region styleClass="stat-card-accent"/>
+                <Label fx:id="courseCountValue" text="—" styleClass="stat-value"/>
+                <Label text="Assigned courses" styleClass="stat-label"/>
+            </VBox>
+            <VBox styleClass="stat-card">
+                <Region styleClass="stat-card-accent"/>
+                <Label fx:id="studentCountValue" text="—" styleClass="stat-value"/>
+                <Label text="Active students" styleClass="stat-label"/>
+            </VBox>
+            <VBox styleClass="stat-card">
+                <Region styleClass="stat-card-accent"/>
+                <Label fx:id="upcomingCountValue" text="—" styleClass="stat-value"/>
+                <Label text="Upcoming assignments" styleClass="stat-label"/>
+            </VBox>
+            <VBox styleClass="stat-card">
+                <Region styleClass="stat-card-accent"/>
+                <Label fx:id="awaitingCountValue" text="—" styleClass="stat-value"/>
+                <Label text="Submissions awaiting grading" styleClass="stat-label"/>
+            </VBox>
+        </FlowPane>
+
+        <VBox styleClass="card">
+            <Label text="Your courses" styleClass="section-title"/>
+            <FlowPane fx:id="courseTiles" hgap="12" vgap="12"/>
+        </VBox>
+
+        <HBox spacing="18">
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" minWidth="320">
+                <Label text="Upcoming assignments" styleClass="section-title"/>
+                <VBox fx:id="upcomingList"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" minWidth="320">
+                <Label text="Awaiting grading" styleClass="section-title"/>
+                <VBox fx:id="awaitingList"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

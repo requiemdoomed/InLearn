@@ -1,0 +1,81 @@
+/*
+ * InLearn light palette.
+ *
+ * This file only defines colours. Every rule in components.css refers to these names, so
+ * switching between theme-light.css and theme-dark.css re-colours the whole interface
+ * without reloading any screen.
+ */
+.root {
+    /* Surfaces */
+    -il-background: #f3f5f9;
+    -il-surface: #ffffff;
+    -il-surface-muted: #f7f9fc;
+    -il-surface-hover: #eef2f7;
+    -il-border: #d9dfe8;
+    -il-border-strong: #a9b4c4;
+
+    /* Text */
+    -il-text: #172033;
+    -il-text-muted: #4f5b70;
+    -il-text-on-accent: #ffffff;
+    -il-link: #0b6b64;
+
+    /* Brand accents (teal) */
+    -il-accent: #0f766e;
+    -il-accent-hover: #115e59;
+    -il-accent-pressed: #134e4a;
+    -il-accent-soft: #dff3f1;
+    -il-focus: #2563eb;
+
+    /* Danger buttons */
+    -il-danger: #b42318;
+    -il-danger-hover: #912018;
+    -il-text-on-danger: #ffffff;
+
+    /* Navigation (deep navy in both themes) */
+    -il-sidebar: #0f1d3a;
+    -il-sidebar-hover: #1a2c52;
+    -il-sidebar-current: #233a6c;
+    -il-sidebar-text: #d3dcee;
+    -il-sidebar-text-strong: #ffffff;
+    -il-sidebar-muted: #93a3c4;
+    -il-sidebar-indicator: #2dd4bf;
+    -il-sidebar-focus: #93c5fd;
+
+    /* Status colours: background, text, border */
+    -il-success-bg: #e6f5eb;
+    -il-success-text: #14532d;
+    -il-success-border: #9fd6b1;
+    -il-warning-bg: #fff3d6;
+    -il-warning-text: #7a3e00;
+    -il-warning-border: #f0c86e;
+    -il-danger-bg: #fde8e7;
+    -il-danger-text: #9b1c13;
+    -il-danger-border: #f2b0aa;
+    -il-info-bg: #e5effd;
+    -il-info-text: #1e40af;
+    -il-info-border: #aac6f3;
+    -il-neutral-bg: #eef1f5;
+    -il-neutral-text: #3d4757;
+    -il-neutral-border: #cdd3dc;
+
+    -il-shadow: rgba(16, 24, 40, 0.08);
+
+    /* JavaFX Modena base colours, so built-in controls match the palette */
+    -fx-base: #e8ecf2;
+    -fx-background: -il-background;
+    -fx-control-inner-background: -il-surface;
+    -fx-control-inner-background-alt: #f8fafc;
+    -fx-accent: -il-accent;
+    -fx-default-button: -il-accent;
+    -fx-focus-color: -il-focus;
+    -fx-faint-focus-color: rgba(37, 99, 235, 0.18);
+    -fx-selection-bar: -il-accent;
+    -fx-selection-bar-non-focused: #cde9e6;
+    -fx-dark-text-color: -il-text;
+    -fx-mid-text-color: #2b3445;
+    -fx-light-text-color: #ffffff;
+    -fx-box-border: -il-border;
+    -fx-text-box-border: -il-border-strong;
+    -fx-table-cell-border-color: #e6eaf0;
+}

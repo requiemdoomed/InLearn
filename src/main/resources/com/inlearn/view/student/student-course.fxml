@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.student.StudentCourseController"
+      styleClass="page">
+
+    <HBox fx:id="archivedBanner" styleClass="warning-banner" managed="false" visible="false">
+        <Label text="This course is archived. You can still read everything, but submissions are closed."
+               wrapText="true"/>
+    </HBox>
+
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab fx:id="overviewTab" text="Overview">
+            <fx:include fx:id="overviewContent" source="student-overview-tab.fxml"/>
+        </Tab>
+        <Tab fx:id="assignmentsTab" text="Assignments">
+            <fx:include fx:id="assignmentsContent" source="student-assignments-tab.fxml"/>
+        </Tab>
+        <Tab fx:id="materialsTab" text="Materials">
+            <fx:include fx:id="materialsContent" source="../common/materials-tab.fxml"/>
+        </Tab>
+        <Tab fx:id="announcementsTab" text="Announcements">
+            <fx:include fx:id="announcementsContent" source="../common/announcements-tab.fxml"/>
+        </Tab>
+        <Tab fx:id="gradesTab" text="Grades">
+            <fx:include fx:id="gradesContent" source="course-grades.fxml"/>
+        </Tab>
+    </TabPane>
+</VBox>

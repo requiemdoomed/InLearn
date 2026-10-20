@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.shell.ShellController">
+
+    <!-- Primary navigation -->
+    <left>
+        <VBox styleClass="sidebar">
+            <HBox styleClass="sidebar-brand">
+                <StackPane styleClass="brand-mark">
+                    <Label text="iL" styleClass="brand-mark-text"/>
+                </StackPane>
+                <VBox>
+                    <Label text="InLearn" styleClass="brand-name"/>
+                    <Label text="Learning Management System" styleClass="brand-tagline"/>
+                </VBox>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" VBox.vgrow="ALWAYS" focusTraversable="false">
+                <VBox fx:id="navigationContainer" spacing="2"/>
+            </ScrollPane>
+
+            <VBox styleClass="sidebar-footer">
+                <Label fx:id="sidebarUserName" styleClass="sidebar-user-name"/>
+                <Label fx:id="sidebarUserRole" styleClass="sidebar-user-role"/>
+                <Button fx:id="signOutButton" text="Sign out" onAction="#onSignOut" styleClass="nav-button"
+                        maxWidth="Infinity"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <BorderPane>
+            <!-- Top bar: current page and signed-in user -->
+            <top>
+                <HBox styleClass="top-bar">
+                    <Button fx:id="backButton" onAction="#onBack" accessibleText="Go back"
+                            styleClass="icon-button" managed="false" visible="false"/>
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label fx:id="pageTitleLabel" styleClass="page-title"/>
+                        <Label fx:id="pageSubtitleLabel" styleClass="page-subtitle" managed="false" visible="false"/>
+                    </VBox>
+                    <ProgressIndicator fx:id="busyIndicator" styleClass="top-progress" visible="false"
+                                       accessibleText="Loading"/>
+                    <Button fx:id="refreshButton" onAction="#onRefresh" accessibleText="Refresh"
+                            styleClass="icon-button"/>
+                    <Button fx:id="themeToggleButton"/>
+                    <HBox styleClass="user-chip">
+                        <StackPane styleClass="avatar">
+                            <Label fx:id="avatarInitials" styleClass="avatar-initials"/>
+                        </StackPane>
+                        <VBox>
+                            <Label fx:id="userNameLabel" styleClass="user-chip-name"/>
+                            <Label fx:id="userRoleLabel" styleClass="user-chip-role"/>
+                        </VBox>
+                    </HBox>
+                </HBox>
+            </top>
+
+            <!-- Page content -->
+            <center>
+                <StackPane fx:id="pageContainer"/>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>

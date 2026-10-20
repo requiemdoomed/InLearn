@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.instructor.RosterTabController"
+      styleClass="tab-body">
+    <HBox styleClass="toolbar-row">
+        <TextField fx:id="searchField" promptText="Search students" styleClass="search-field"
+                   accessibleText="Search the roster"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="countLabel" styleClass="muted"/>
+    </HBox>
+    <TableView fx:id="rosterTable" VBox.vgrow="ALWAYS" accessibleText="Course roster">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Student" prefWidth="220"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="260"/>
+            <TableColumn fx:id="enrolledColumn" text="Enrolled" prefWidth="160"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN"/>
+        </columnResizePolicy>
+    </TableView>
+    <Label text="Enrollments are managed by an administrator." styleClass="field-hint"/>
+</VBox>

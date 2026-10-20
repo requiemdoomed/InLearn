@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.student.StudentOverviewTabController"
+            fitToWidth="true">
+    <VBox styleClass="tab-body">
+        <VBox styleClass="card">
+            <Label text="About this course" styleClass="section-title"/>
+            <Label fx:id="descriptionLabel" styleClass="body-text" wrapText="true"/>
+        </VBox>
+        <VBox styleClass="card">
+            <Label text="Course details" styleClass="section-title"/>
+            <GridPane hgap="24" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Code" styleClass="detail-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="codeValue" styleClass="detail-value" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Term" styleClass="detail-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="termValue" styleClass="detail-value" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Instructor" styleClass="detail-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="instructorValue" styleClass="detail-value" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Status" styleClass="detail-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="statusBadge" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+    </VBox>
+</ScrollPane>

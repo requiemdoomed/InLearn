@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.common.AnnouncementFormController"
+      styleClass="form" prefWidth="560">
+    <VBox styleClass="field">
+        <Label text="Title" labelFor="$titleField" styleClass="field-label"/>
+        <TextField fx:id="titleField" promptText="e.g. Office hours moved to Thursday"/>
+    </VBox>
+    <VBox styleClass="field">
+        <Label text="Message" labelFor="$bodyArea" styleClass="field-label"/>
+        <TextArea fx:id="bodyArea" prefRowCount="8" wrapText="true"/>
+        <Label text="Everyone enrolled in the course can read announcements." styleClass="field-hint"/>
+    </VBox>
+    <Label fx:id="errorLabel" managed="false" visible="false"/>
+</VBox>

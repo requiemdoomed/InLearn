@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.common.AnnouncementsTabController"
+      styleClass="tab-body">
+    <HBox styleClass="toolbar-row">
+        <TextField fx:id="searchField" promptText="Search announcements" styleClass="search-field"
+                   accessibleText="Search announcements"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="countLabel" styleClass="muted"/>
+        <Button fx:id="postButton" text="Post announcement" onAction="#onPost" styleClass="primary"/>
+    </HBox>
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <VBox fx:id="announcementList" spacing="12"/>
+    </ScrollPane>
+</VBox>

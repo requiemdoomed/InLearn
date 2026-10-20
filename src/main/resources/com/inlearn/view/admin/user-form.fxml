@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.admin.UserFormController"
+      styleClass="form" prefWidth="500">
+
+    <GridPane styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Full name" labelFor="$fullNameField" styleClass="field-label"
+               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="fullNameField" promptText="e.g. Priya Raman" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Email" labelFor="$emailField" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" promptText="name@example.edu" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Role" labelFor="$roleChoice" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="roleChoice" maxWidth="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label fx:id="statusLabel" text="Status" labelFor="$statusChoice" styleClass="field-label"
+               GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="statusChoice" maxWidth="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Label fx:id="roleHint" styleClass="field-hint" wrapText="true"/>
+
+    <Separator/>
+
+    <VBox spacing="4">
+        <Label fx:id="passwordHeading" text="Temporary password" styleClass="field-label"/>
+        <Label fx:id="passwordHint" styleClass="field-hint" wrapText="true"/>
+    </VBox>
+    <GridPane styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        <Label text="Password" labelFor="$passwordField" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="passwordField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Confirm password" labelFor="$confirmPasswordField" styleClass="field-label"
+               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Label fx:id="errorLabel" managed="false" visible="false"/>
+</VBox>

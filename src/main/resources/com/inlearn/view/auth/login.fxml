@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.auth.LoginController"
+      styleClass="login-background">
+
+    <!-- Left: brand panel -->
+    <VBox styleClass="login-hero" HBox.hgrow="NEVER">
+        <HBox styleClass="sidebar-brand">
+            <StackPane styleClass="brand-mark">
+                <Label text="iL" styleClass="brand-mark-text"/>
+            </StackPane>
+            <VBox>
+                <Label text="InLearn" styleClass="brand-name"/>
+                <Label text="Learning Management System" styleClass="brand-tagline"/>
+            </VBox>
+        </HBox>
+        <Label text="Your courses, coursework and grades in one place."
+               styleClass="login-hero-title" wrapText="true"/>
+        <Label text="Sign in with the account your school created for you."
+               styleClass="login-hero-text" wrapText="true"/>
+        <VBox spacing="8">
+            <Label text="•  Course materials and announcements" styleClass="login-hero-point"/>
+            <Label text="•  Assignment submissions with receipts" styleClass="login-hero-point"/>
+            <Label text="•  Grades and instructor feedback" styleClass="login-hero-point"/>
+        </VBox>
+    </VBox>
+
+    <!-- Right: sign-in form -->
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER">
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="16" right="20" bottom="0" left="20"/>
+            </padding>
+            <Button fx:id="themeToggleButton" styleClass="ghost"/>
+        </HBox>
+        <Region VBox.vgrow="ALWAYS"/>
+        <VBox styleClass="login-card">
+            <Label text="Sign in" styleClass="login-title"/>
+            <Label fx:id="messageLabel" managed="false" visible="false" wrapText="true" styleClass="form-success"/>
+
+            <VBox fx:id="connectionBanner" styleClass="error-banner" managed="false" visible="false">
+                <Label fx:id="connectionMessage" wrapText="true"/>
+                <Button text="Try again" onAction="#onCheckConnection"/>
+            </VBox>
+
+            <VBox styleClass="field">
+                <Label text="Email" labelFor="$emailField" styleClass="field-label"/>
+                <TextField fx:id="emailField" promptText="name@example.edu" accessibleText="Email address"/>
+            </VBox>
+            <VBox styleClass="field">
+                <Label text="Password" labelFor="$passwordField" styleClass="field-label"/>
+                <PasswordField fx:id="passwordField" accessibleText="Password"/>
+            </VBox>
+            <CheckBox fx:id="rememberEmailCheck" text="Remember my email on this computer"/>
+
+            <Label fx:id="errorLabel" styleClass="form-error" wrapText="true" managed="false" visible="false"/>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button fx:id="signInButton" text="Sign in" defaultButton="true" onAction="#onSignIn"
+                        styleClass="primary" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <ProgressIndicator fx:id="progressIndicator" visible="false" styleClass="top-progress"/>
+            </HBox>
+
+            <Label text="Accounts are created by your administrator. If you forgot your password, ask them to reset it."
+                   wrapText="true" styleClass="field-hint"/>
+        </VBox>
+        <Region VBox.vgrow="ALWAYS"/>
+    </VBox>
+</HBox>

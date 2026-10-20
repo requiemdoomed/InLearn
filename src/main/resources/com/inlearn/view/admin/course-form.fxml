@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.admin.CourseFormController"
+      styleClass="form" prefWidth="540">
+
+    <GridPane styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="120"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Course code" labelFor="$codeField" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="codeField" promptText="e.g. CS 101" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Title" labelFor="$titleField" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="titleField" promptText="e.g. Introduction to Programming" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Term" labelFor="$termField" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="termField" promptText="e.g. Fall 2026" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Instructor" labelFor="$instructorChoice" styleClass="field-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="instructorChoice" maxWidth="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Label text="Codes must be unique. Only active instructor accounts can be assigned." styleClass="field-hint" wrapText="true"/>
+
+    <VBox styleClass="field">
+        <Label text="Description" labelFor="$descriptionArea" styleClass="field-label"/>
+        <TextArea fx:id="descriptionArea" prefRowCount="5" wrapText="true"
+                  promptText="What the course covers. The instructor can update this later."/>
+    </VBox>
+
+    <Label fx:id="errorLabel" managed="false" visible="false"/>
+</VBox>

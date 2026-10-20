@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.common.MaterialFormController"
+      styleClass="form" prefWidth="520">
+
+    <VBox styleClass="field">
+        <Label text="Title" labelFor="$titleField" styleClass="field-label"/>
+        <TextField fx:id="titleField" promptText="e.g. Week 3 lecture slides"/>
+    </VBox>
+
+    <VBox fx:id="fileSection" styleClass="field">
+        <Label text="File" styleClass="field-label"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button fx:id="chooseFileButton" text="Choose file…" onAction="#onChooseFile"/>
+            <Label fx:id="chosenFileLabel" text="No file chosen" styleClass="muted" wrapText="true"/>
+        </HBox>
+        <Label fx:id="fileRulesLabel" styleClass="field-hint" wrapText="true"/>
+    </VBox>
+
+    <VBox fx:id="linkSection" styleClass="field">
+        <Label text="Web address" labelFor="$urlField" styleClass="field-label"/>
+        <TextField fx:id="urlField" promptText="https://"/>
+        <Label text="Students open links in their web browser." styleClass="field-hint"/>
+    </VBox>
+
+    <VBox styleClass="field">
+        <Label text="Description (optional)" labelFor="$descriptionArea" styleClass="field-label"/>
+        <TextArea fx:id="descriptionArea" prefRowCount="3" wrapText="true"/>
+    </VBox>
+
+    <Label fx:id="errorLabel" managed="false" visible="false"/>
+</VBox>

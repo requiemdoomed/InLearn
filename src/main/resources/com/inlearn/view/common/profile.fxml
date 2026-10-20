@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.common.ProfileController"
+            fitToWidth="true" styleClass="page-scroll">
+    <VBox styleClass="page" maxWidth="820">
+
+        <!-- Profile -->
+        <VBox styleClass="card">
+            <Label text="Your profile" styleClass="section-title"/>
+            <GridPane styleClass="form-grid">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Display name" labelFor="$displayNameField" styleClass="field-label"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="displayNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Email" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="emailValue" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Role" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="roleValue" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+            <Label text="Only an administrator can change your email address or role." styleClass="field-hint"/>
+            <Label fx:id="profileMessage" managed="false" visible="false"/>
+            <HBox styleClass="button-row">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="saveNameButton" text="_Save name" onAction="#onSaveName" styleClass="primary"/>
+            </HBox>
+        </VBox>
+
+        <!-- Appearance -->
+        <VBox styleClass="card">
+            <Label text="Appearance" styleClass="section-title"/>
+            <Label text="Changes apply immediately and are saved to your account, so they follow you to any computer."
+                   styleClass="field-hint" wrapText="true"/>
+            <fx:define>
+                <ToggleGroup fx:id="themeGroup"/>
+            </fx:define>
+            <HBox spacing="24">
+                <RadioButton fx:id="systemThemeOption" text="System" toggleGroup="$themeGroup"/>
+                <RadioButton fx:id="lightThemeOption" text="Light" toggleGroup="$themeGroup"/>
+                <RadioButton fx:id="darkThemeOption" text="Dark" toggleGroup="$themeGroup"/>
+            </HBox>
+            <Label fx:id="systemThemeNote" styleClass="field-hint" wrapText="true"/>
+        </VBox>
+
+        <!-- Password -->
+        <VBox styleClass="card">
+            <Label text="Change password" styleClass="section-title"/>
+            <GridPane styleClass="form-grid">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Current password" labelFor="$currentPasswordField" styleClass="field-label"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="currentPasswordField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="New password" labelFor="$newPasswordField" styleClass="field-label"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="newPasswordField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Confirm new password" labelFor="$confirmPasswordField" styleClass="field-label"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+            <Label fx:id="passwordRules" styleClass="field-hint" wrapText="true"/>
+            <Label fx:id="passwordMessage" managed="false" visible="false"/>
+            <HBox styleClass="button-row">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="changePasswordButton" text="Change password" onAction="#onChangePassword"
+                        styleClass="primary"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

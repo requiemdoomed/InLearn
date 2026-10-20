@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.inlearn.ui.student.CourseGradesController"
+      styleClass="tab-body">
+    <HBox styleClass="card">
+        <HBox styleClass="grade-summary" HBox.hgrow="ALWAYS">
+            <VBox spacing="2" minWidth="-Infinity">
+                <Label text="Current grade" styleClass="stat-label"/>
+                <Label fx:id="percentageLabel" text="—" styleClass="grade-percentage" minWidth="-Infinity"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label fx:id="pointsSummaryLabel" styleClass="detail-value" wrapText="true"/>
+                <Label text="Your current grade covers graded work only: points earned ÷ points possible on graded assignments. Work that hasn't been graded yet isn't counted as zero."
+                       styleClass="field-hint" wrapText="true"/>
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <TableView fx:id="gradeTable" VBox.vgrow="ALWAYS" accessibleText="Assignment grades">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Assignment" prefWidth="220"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="210"/>
+            <TableColumn fx:id="earnedColumn" text="Earned" prefWidth="90"/>
+            <TableColumn fx:id="possibleColumn" text="Possible" prefWidth="80"/>
+            <TableColumn fx:id="percentColumn" text="Percent" prefWidth="80"/>
+            <TableColumn fx:id="feedbackColumn" text="Feedback" prefWidth="260"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN"/>
+        </columnResizePolicy>
+    </TableView>
+
+    <VBox styleClass="feedback-box">
+        <Label fx:id="feedbackHeading" text="Feedback" styleClass="field-label"/>
+        <Label fx:id="feedbackText" text="Select an assignment to read your instructor's full feedback."
+               styleClass="body-text" wrapText="true"/>
+    </VBox>
+</VBox>

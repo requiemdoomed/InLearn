@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.inlearn.ui.instructor.AssignmentEditorController"
+            fitToWidth="true" styleClass="page-scroll">
+    <VBox styleClass="page" maxWidth="900">
+
+        <HBox fx:id="existingWorkBanner" styleClass="info-banner" managed="false" visible="false">
+            <Label fx:id="existingWorkLabel" wrapText="true"/>
+        </HBox>
+
+        <VBox styleClass="card">
+            <Label text="Details" styleClass="section-title"/>
+            <VBox styleClass="field">
+                <Label text="Title" labelFor="$titleField" styleClass="field-label"/>
+                <TextField fx:id="titleField" promptText="e.g. Lab 2: Loops and conditions"/>
+            </VBox>
+            <VBox styleClass="field">
+                <Label text="Instructions" labelFor="$instructionsArea" styleClass="field-label"/>
+                <TextArea fx:id="instructionsArea" prefRowCount="9" wrapText="true"
+                          promptText="What students need to do, what to submit and how it will be marked."/>
+            </VBox>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Deadline and points" styleClass="section-title"/>
+            <HBox spacing="16">
+                <VBox styleClass="field">
+                    <Label text="Due date" labelFor="$dueDatePicker" styleClass="field-label"/>
+                    <DatePicker fx:id="dueDatePicker" promptText="Choose a date"/>
+                </VBox>
+                <VBox styleClass="field">
+                    <Label text="Due time" labelFor="$dueTimeField" styleClass="field-label"/>
+                    <TextField fx:id="dueTimeField" promptText="23:59" prefColumnCount="7"/>
+                </VBox>
+                <VBox styleClass="field">
+                    <Label text="Maximum points" labelFor="$maxPointsField" styleClass="field-label"/>
+                    <TextField fx:id="maxPointsField" promptText="e.g. 10" prefColumnCount="8"/>
+                </VBox>
+            </HBox>
+            <Label fx:id="zoneLabel" styleClass="field-hint" wrapText="true"/>
+            <Label fx:id="maxPointsLockNote" styleClass="lock-note" wrapText="true" managed="false" visible="false"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="Late submissions" styleClass="section-title"/>
+            <VBox styleClass="field">
+                <Label text="Policy" labelFor="$latePolicyChoice" styleClass="field-label"/>
+                <ComboBox fx:id="latePolicyChoice" prefWidth="340"/>
+            </VBox>
+            <CheckBox fx:id="cutoffCheck" text="Stop accepting late work after a cutoff"/>
+            <HBox fx:id="cutoffRow" spacing="16">
+                <VBox styleClass="field">
+                    <Label text="Cutoff date" labelFor="$cutoffDatePicker" styleClass="field-label"/>
+                    <DatePicker fx:id="cutoffDatePicker"/>
+                </VBox>
+                <VBox styleClass="field">
+                    <Label text="Cutoff time" labelFor="$cutoffTimeField" styleClass="field-label"/>
+                    <TextField fx:id="cutoffTimeField" promptText="23:59" prefColumnCount="7"/>
+                </VBox>
+            </HBox>
+            <Label fx:id="latePolicyExplanation" styleClass="field-hint" wrapText="true"/>
+        </VBox>
+
+        <Label fx:id="errorLabel" managed="false" visible="false"/>
+
+        <HBox styleClass="button-row">
+            <Button fx:id="deleteButton" text="Delete assignment" onAction="#onDelete" styleClass="danger-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel" cancelButton="true"/>
+            <Button fx:id="saveButton" text="_Save assignment" onAction="#onSave" styleClass="primary"/>
+        </HBox>
+    </VBox>
+</ScrollPane>

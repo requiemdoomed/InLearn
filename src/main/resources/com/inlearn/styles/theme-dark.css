@@ -1,0 +1,73 @@
+/*
+ * InLearn dark palette. Same names as theme-light.css; see that file for how theming works.
+ */
+.root {
+    /* Surfaces: deep charcoal-navy background with slightly lighter surfaces */
+    -il-background: #0e1320;
+    -il-surface: #171e2d;
+    -il-surface-muted: #1b2334;
+    -il-surface-hover: #232d42;
+    -il-border: #2b354a;
+    -il-border-strong: #4a5670;
+
+    /* Text: off-white rather than pure white to reduce glare */
+    -il-text: #e7ebf3;
+    -il-text-muted: #a9b3c6;
+    -il-text-on-accent: #04211e;
+    -il-link: #5eead4;
+
+    /* Brand accents: a lighter teal with dark text keeps contrast high */
+    -il-accent: #2dd4bf;
+    -il-accent-hover: #5eead4;
+    -il-accent-pressed: #14b8a6;
+    -il-accent-soft: #123b3a;
+    -il-focus: #7cb4ff;
+
+    -il-danger: #f87171;
+    -il-danger-hover: #fca5a5;
+    -il-text-on-danger: #2a0606;
+
+    -il-sidebar: #0a1226;
+    -il-sidebar-hover: #15213d;
+    -il-sidebar-current: #1d2f57;
+    -il-sidebar-text: #ccd6ea;
+    -il-sidebar-text-strong: #ffffff;
+    -il-sidebar-muted: #8797b8;
+    -il-sidebar-indicator: #2dd4bf;
+    -il-sidebar-focus: #93c5fd;
+
+    -il-success-bg: #12301f;
+    -il-success-text: #86efac;
+    -il-success-border: #23593a;
+    -il-warning-bg: #36270b;
+    -il-warning-text: #fcd38d;
+    -il-warning-border: #6b4c12;
+    -il-danger-bg: #3a1517;
+    -il-danger-text: #fca5a5;
+    -il-danger-border: #6e2a2d;
+    -il-info-bg: #14274a;
+    -il-info-text: #a5c8ff;
+    -il-info-border: #2c4a80;
+    -il-neutral-bg: #232b3b;
+    -il-neutral-text: #cbd2df;
+    -il-neutral-border: #3a4458;
+
+    -il-shadow: rgba(0, 0, 0, 0.35);
+
+    -fx-base: #262f42;
+    -fx-background: -il-background;
+    -fx-control-inner-background: #151c2a;
+    -fx-control-inner-background-alt: #192133;
+    -fx-accent: -il-accent;
+    -fx-default-button: -il-accent;
+    -fx-focus-color: -il-focus;
+    -fx-faint-focus-color: rgba(124, 180, 255, 0.22);
+    -fx-selection-bar: #1f6f69;
+    -fx-selection-bar-non-focused: #24414a;
+    -fx-dark-text-color: #0e1320;
+    -fx-mid-text-color: #cbd2df;
+    -fx-light-text-color: -il-text;
+    -fx-box-border: -il-border;
+    -fx-text-box-border: -il-border-strong;
+    -fx-table-cell-border-color: #222b3d;
+}
