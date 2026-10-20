@@ -1,0 +1,24 @@
+# Build output
+target/
+*.class
+
+# Local configuration and secrets — copy the *.example.properties files instead
+config/application.properties
+config/test-database.properties
+*.local.properties
+.env
+
+# Runtime data created by the application
+inlearn-data/
+logs/
+*.log
+
+# IDE and OS files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.DS_Store
+Thumbs.db
