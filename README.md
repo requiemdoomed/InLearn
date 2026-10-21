@@ -26,7 +26,7 @@ InLearn is a JavaFX desktop learning management system for colleges and universi
 
 ## Screenshots
 
-All screenshots come from the built-in demo data (`exec:java@seed-demo`).
+All screenshots come from the built-in demo data.
 
 ### Sign in
 
