@@ -95,6 +95,7 @@ public class ShellController implements Navigator {
         backButton.setTooltip(new Tooltip("Back (Alt+Left)"));
         refreshButton.setTooltip(new Tooltip("Refresh (F5)"));
         busyIndicator.visibleProperty().bind(ui.tasks().runningTaskCountProperty().greaterThan(0));
+        busyIndicator.managedProperty().bind(busyIndicator.visibleProperty());
 
         ThemeToggle.attach(themeToggleButton, ui.themeManager(), false, preference ->
                 ui.tasks().task(() -> {

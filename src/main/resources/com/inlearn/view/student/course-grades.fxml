@@ -25,12 +25,12 @@
 
     <TableView fx:id="gradeTable" VBox.vgrow="ALWAYS" accessibleText="Assignment grades">
         <columns>
-            <TableColumn fx:id="titleColumn" text="Assignment" prefWidth="220"/>
-            <TableColumn fx:id="statusColumn" text="Status" prefWidth="210"/>
-            <TableColumn fx:id="earnedColumn" text="Earned" prefWidth="90"/>
-            <TableColumn fx:id="possibleColumn" text="Possible" prefWidth="80"/>
-            <TableColumn fx:id="percentColumn" text="Percent" prefWidth="80"/>
-            <TableColumn fx:id="feedbackColumn" text="Feedback" prefWidth="260"/>
+            <TableColumn fx:id="titleColumn" text="Assignment" prefWidth="170" minWidth="140"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="215" minWidth="215"/>
+            <TableColumn fx:id="earnedColumn" text="Earned" prefWidth="95" minWidth="95"/>
+            <TableColumn fx:id="possibleColumn" text="Possible" prefWidth="75" minWidth="75"/>
+            <TableColumn fx:id="percentColumn" text="Percent" prefWidth="72" minWidth="72"/>
+            <TableColumn fx:id="feedbackColumn" text="Feedback" prefWidth="220" minWidth="110"/>
         </columns>
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN"/>

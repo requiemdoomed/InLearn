@@ -50,7 +50,8 @@
                         <Label fx:id="pageTitleLabel" styleClass="page-title"/>
                         <Label fx:id="pageSubtitleLabel" styleClass="page-subtitle" managed="false" visible="false"/>
                     </VBox>
-                    <ProgressIndicator fx:id="busyIndicator" styleClass="top-progress" visible="false"
+                    <ProgressIndicator fx:id="busyIndicator" styleClass="top-progress" visible="false" managed="false"
+                                       maxWidth="-Infinity" maxHeight="-Infinity"
                                        accessibleText="Loading"/>
                     <Button fx:id="refreshButton" onAction="#onRefresh" accessibleText="Refresh"
                             styleClass="icon-button"/>

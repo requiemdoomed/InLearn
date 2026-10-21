@@ -21,7 +21,7 @@
 
         <Label text="Full name" labelFor="$fullNameField" styleClass="field-label"
                GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="fullNameField" promptText="e.g. Priya Raman" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <TextField fx:id="fullNameField" promptText="e.g. Savyata Ghimire" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
         <Label text="Email" labelFor="$emailField" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <TextField fx:id="emailField" promptText="name@example.edu" GridPane.rowIndex="1" GridPane.columnIndex="1"/>

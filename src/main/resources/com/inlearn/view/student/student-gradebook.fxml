@@ -8,7 +8,7 @@
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.inlearn.ui.student.StudentGradebookController"
       styleClass="page" spacing="18">
-    <VBox spacing="10" prefWidth="300" minWidth="240">
+    <VBox spacing="10" prefWidth="200" maxWidth="200" minWidth="180">
         <Label text="Courses" styleClass="section-title"/>
         <ListView fx:id="courseList" VBox.vgrow="ALWAYS" accessibleText="Courses and current grades"/>
         <Label text="Only your own grades are shown." styleClass="field-hint" wrapText="true"/>

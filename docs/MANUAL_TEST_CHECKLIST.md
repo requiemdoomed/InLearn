@@ -1,6 +1,6 @@
 # Manual test checklist (JavaFX workflows)
 
-Run against a database seeded with `mvn -q compile exec:java@seed-demo -Dexec.args="--reset"`. Tick each item in **both light and dark mode** where marked ◐.
+Run against a database seeded with `./mvnw -q compile exec:java@seed-demo "-Dexec.args=--reset"` (or the VS Code task **InLearn: Reset and reload demo data**). Tick each item in **both light and dark mode** where marked ◐.
 
 ## Acceptance workflow
 
@@ -20,10 +20,10 @@ Run against a database seeded with `mvn -q compile exec:java@seed-demo -Dexec.ar
 
 ## Rules and states
 
-- [ ] Overdue: as `noah.kim`, CS 101 Lab 1 shows **Overdue**; submit button is closed with an explanation (no late work).
-- [ ] Late: as `noah.kim`, CS 101 Lab 2 accepts a submission marked late.
+- [ ] Overdue: as `surakshya.neupane`, CS 101 Lab 1 shows **Overdue**; submit button is closed with an explanation (no late work).
+- [ ] Late: as `surakshya.neupane`, CS 101 Lab 2 accepts a submission marked late.
 - [ ] Replacement before the deadline asks for confirmation and increments the attempt number.
-- [ ] Graded work can't be replaced (as `maya.chen`, CS 101 Lab 1).
+- [ ] Graded work can't be replaced (as `krishna.bashyal`, CS 101 Lab 1).
 - [ ] Assignment editor: with graded submissions, maximum points are locked with an explanation; changing the due date asks to recalculate late status.
 - [ ] Archive a course: everything becomes read-only with a banner; restore it.
 - [ ] Deactivate a user: they can't sign in ("Your account is inactive"); reactivate.

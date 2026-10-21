@@ -12,7 +12,7 @@ class InputValidatorTest {
 
     @Test
     void emailsAreNormalisedToLowerCase() {
-        assertEquals("maya.chen@example.edu", InputValidator.normalizeEmail("  Maya.Chen@Example.EDU "));
+        assertEquals("swayam.shakya@example.edu", InputValidator.normalizeEmail("  Swayam.Shakya@Example.EDU "));
     }
 
     @Test

@@ -37,7 +37,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 /**
- * DEVELOPMENT ONLY: fills an empty database with fictional demo data — one administrator, two
+ * DEVELOPMENT ONLY: fills an empty database with sample demo data — one administrator, two
  * instructors, six students, three courses with materials, announcements, upcoming and overdue
  * assignments, and on-time, late and graded submissions.
  *
@@ -140,98 +140,98 @@ public final class DemoDataSeeder {
 
     private void insertDemoData(Connection connection) throws SQLException {
         // ----- People -------------------------------------------------------------------
-        long admin = user(connection, "admin@inlearn.test", "Alex Morgan", Role.ADMIN, ADMIN_PASSWORD);
-        long priya = user(connection, "priya.raman@inlearn.test", "Dr. Priya Raman", Role.INSTRUCTOR, INSTRUCTOR_PASSWORD);
-        long daniel = user(connection, "daniel.okafor@inlearn.test", "Prof. Daniel Okafor", Role.INSTRUCTOR, INSTRUCTOR_PASSWORD);
-        long maya = user(connection, "maya.chen@student.inlearn.test", "Maya Chen", Role.STUDENT, STUDENT_PASSWORD);
-        long liam = user(connection, "liam.rossi@student.inlearn.test", "Liam Rossi", Role.STUDENT, STUDENT_PASSWORD);
-        long sofia = user(connection, "sofia.haddad@student.inlearn.test", "Sofia Haddad", Role.STUDENT, STUDENT_PASSWORD);
-        long noah = user(connection, "noah.kim@student.inlearn.test", "Noah Kim", Role.STUDENT, STUDENT_PASSWORD);
-        long ava = user(connection, "ava.johnson@student.inlearn.test", "Ava Johnson", Role.STUDENT, STUDENT_PASSWORD);
-        long ethan = user(connection, "ethan.patel@student.inlearn.test", "Ethan Patel", Role.STUDENT, STUDENT_PASSWORD);
+        long admin = user(connection, "admin@inlearn.test", "Swayam Shakya", Role.ADMIN, ADMIN_PASSWORD);
+        long savyata = user(connection, "savyata.ghimire@inlearn.test", "Dr. Savyata Ghimire", Role.INSTRUCTOR, INSTRUCTOR_PASSWORD);
+        long bidhan = user(connection, "bidhan.thapa@inlearn.test", "Prof. Bidhan Thapa", Role.INSTRUCTOR, INSTRUCTOR_PASSWORD);
+        long krishna = user(connection, "krishna.bashyal@student.inlearn.test", "Krishna Bashyal", Role.STUDENT, STUDENT_PASSWORD);
+        long felix = user(connection, "felix.montalfu@student.inlearn.test", "Felix Montalfu", Role.STUDENT, STUDENT_PASSWORD);
+        long vikas = user(connection, "vikas.saahil@student.inlearn.test", "Vikas Saahil", Role.STUDENT, STUDENT_PASSWORD);
+        long surakshya = user(connection, "surakshya.neupane@student.inlearn.test", "Surakshya Neupane", Role.STUDENT, STUDENT_PASSWORD);
+        long aarav = user(connection, "aarav.karki@student.inlearn.test", "Aarav Karki", Role.STUDENT, STUDENT_PASSWORD);
+        long prisha = user(connection, "prisha.adhikari@student.inlearn.test", "Prisha Adhikari", Role.STUDENT, STUDENT_PASSWORD);
 
         // ----- Courses and enrollments ---------------------------------------------------
         long cs101 = courseDao.insert(connection, "CS 101", "Introduction to Programming",
                 "A first course in programming with Java. We cover variables, conditions, loops, methods and simple "
-                        + "classes through weekly labs and one project. No prior experience needed.", "Fall 2026", priya);
+                        + "classes through weekly labs and one project. No prior experience needed.", "Fall 2026", savyata);
         long math201 = courseDao.insert(connection, "MATH 201", "Linear Algebra",
                 "Vectors, matrices, linear transformations, determinants and eigenvalues, with applications to "
-                        + "computer graphics and data analysis.", "Fall 2026", daniel);
+                        + "computer graphics and data analysis.", "Fall 2026", bidhan);
         long eng110 = courseDao.insert(connection, "ENG 110", "Academic Writing",
                 "Plan, draft and revise clear academic essays. Includes peer review and an individual final essay.",
-                "Fall 2026", priya);
-        enroll(connection, cs101, maya, liam, sofia, noah, ava);
-        enroll(connection, math201, maya, sofia, noah, ethan);
-        enroll(connection, eng110, liam, ava, ethan, maya);
+                "Fall 2026", savyata);
+        enroll(connection, cs101, krishna, felix, vikas, surakshya, aarav);
+        enroll(connection, math201, krishna, vikas, surakshya, prisha);
+        enroll(connection, eng110, felix, aarav, prisha, krishna);
 
         // ----- Materials --------------------------------------------------------------------
-        fileMaterial(connection, cs101, priya, "Course syllabus", "Schedule, grading scheme and policies.",
+        fileMaterial(connection, cs101, savyata, "Course syllabus", "Schedule, grading scheme and policies.",
                 "cs101-syllabus.txt", "CS 101 — Introduction to Programming\nFall 2026\n\nWeekly labs: 40%\n"
                         + "Project: 30%\nFinal exam: 30%\n\nOffice hours: Tuesdays 2–4 pm.\n");
         materialDao.insertLink(connection, cs101, "Java documentation", "Official reference for the Java platform.",
-                "https://docs.oracle.com/en/java/", priya);
-        fileMaterial(connection, math201, daniel, "Lecture 1 notes", "Vectors and linear combinations.",
+                "https://docs.oracle.com/en/java/", savyata);
+        fileMaterial(connection, math201, bidhan, "Lecture 1 notes", "Vectors and linear combinations.",
                 "math201-lecture-01.md", "# Lecture 1: Vectors\n\nA vector is an ordered list of numbers...\n");
         materialDao.insertLink(connection, math201, "Interactive linear algebra textbook", null,
-                "https://textbooks.math.gatech.edu/ila/", daniel);
-        fileMaterial(connection, eng110, priya, "Essay rubric", "How essays are assessed.", "eng110-rubric.txt",
+                "https://textbooks.math.gatech.edu/ila/", bidhan);
+        fileMaterial(connection, eng110, savyata, "Essay rubric", "How essays are assessed.", "eng110-rubric.txt",
                 "Thesis (20)\nStructure (20)\nEvidence (30)\nStyle (20)\nReferences (10)\n");
 
         // ----- Assignments, submissions and grades -----------------------------------------
-        long lab1 = assignment(connection, cs101, priya, "Lab 1: Hello, Java",
+        long lab1 = assignment(connection, cs101, savyata, "Lab 1: Hello, Java",
                 "Install the JDK, write a program that prints a greeting, and submit your .java file.",
                 daysFromNow(-10), "10", LatePolicy.NO_LATE, null);
-        graded(connection, submit(connection, lab1, maya, daysFromNow(-11), false, "HelloJava.java"),
-                "9.5", "Clean, well-formatted code. Remember to add a comment explaining the class.", priya);
-        graded(connection, submit(connection, lab1, liam, daysFromNow(-10.5), false, "Hello.java"),
-                "8", "Works correctly. Use a more descriptive class name next time.", priya);
-        submit(connection, lab1, sofia, daysFromNow(-12), false, "Greeting.java");
+        graded(connection, submit(connection, lab1, krishna, daysFromNow(-11), false, "HelloJava.java"),
+                "9.5", "Clean, well-formatted code. Remember to add a comment explaining the class.", savyata);
+        graded(connection, submit(connection, lab1, felix, daysFromNow(-10.5), false, "Hello.java"),
+                "8", "Works correctly. Use a more descriptive class name next time.", savyata);
+        submit(connection, lab1, vikas, daysFromNow(-12), false, "Greeting.java");
 
-        long lab2 = assignment(connection, cs101, priya, "Lab 2: Loops and Conditions",
+        long lab2 = assignment(connection, cs101, savyata, "Lab 2: Loops and Conditions",
                 "Write a program that prints the FizzBuzz sequence from 1 to 100. Submit your source file.",
                 daysFromNow(-2), "20", LatePolicy.ALLOW_LATE, null);
-        submit(connection, lab2, maya, daysFromNow(-3), false, "FizzBuzz.java");
-        submit(connection, lab2, liam, daysFromNow(-1), true, "FizzBuzz.java");
-        graded(connection, submit(connection, lab2, sofia, daysFromNow(-1.5), true, "FizzBuzz.java"),
-                "15", "Correct output. Submitted late, and the loop could be simplified.", priya);
+        submit(connection, lab2, krishna, daysFromNow(-3), false, "FizzBuzz.java");
+        submit(connection, lab2, felix, daysFromNow(-1), true, "FizzBuzz.java");
+        graded(connection, submit(connection, lab2, vikas, daysFromNow(-1.5), true, "FizzBuzz.java"),
+                "15", "Correct output. Submitted late, and the loop could be simplified.", savyata);
 
-        long project = assignment(connection, cs101, priya, "Project 1: Text Adventure",
+        long project = assignment(connection, cs101, savyata, "Project 1: Text Adventure",
                 "Build a small text adventure game with at least three rooms. Submit a .zip of your project.",
                 daysFromNow(7), "50", LatePolicy.ALLOW_LATE, daysFromNow(10));
-        submit(connection, project, maya, daysFromNow(-0.5), false, "text-adventure-draft.txt");
+        submit(connection, project, krishna, daysFromNow(-0.5), false, "text-adventure-draft.txt");
 
-        long problemSet1 = assignment(connection, math201, daniel, "Problem Set 1",
+        long problemSet1 = assignment(connection, math201, bidhan, "Problem Set 1",
                 "Exercises 1.1–1.12 from the course notes. Show your working.", daysFromNow(-5), "25",
                 LatePolicy.NO_LATE, null);
-        graded(connection, submit(connection, problemSet1, maya, daysFromNow(-6), false, "ps1-maya.txt"),
-                "22", "Strong work. Check question 7 — a sign error changed the final answer.", daniel);
-        graded(connection, submit(connection, problemSet1, sofia, daysFromNow(-5.5), false, "ps1.txt"),
-                "19.5", "Good method throughout. Questions 10–12 need more justification.", daniel);
-        submit(connection, problemSet1, ethan, daysFromNow(-5.2), false, "problem-set-1.txt");
+        graded(connection, submit(connection, problemSet1, krishna, daysFromNow(-6), false, "ps1-krishna.txt"),
+                "22", "Strong work. Check question 7 — a sign error changed the final answer.", bidhan);
+        graded(connection, submit(connection, problemSet1, vikas, daysFromNow(-5.5), false, "ps1.txt"),
+                "19.5", "Good method throughout. Questions 10–12 need more justification.", bidhan);
+        submit(connection, problemSet1, prisha, daysFromNow(-5.2), false, "problem-set-1.txt");
 
-        assignment(connection, math201, daniel, "Problem Set 2",
+        assignment(connection, math201, bidhan, "Problem Set 2",
                 "Exercises 2.1–2.10 on matrix multiplication and inverses.", daysFromNow(3), "25",
                 LatePolicy.ALLOW_LATE, null);
 
-        long outline = assignment(connection, eng110, priya, "Essay outline",
+        long outline = assignment(connection, eng110, savyata, "Essay outline",
                 "Submit a one-page outline with your thesis statement and three supporting points.",
                 daysFromNow(-3), "10", LatePolicy.ALLOW_LATE, null);
-        graded(connection, submit(connection, outline, liam, daysFromNow(-4), false, "outline.txt"),
-                "9", "A clear, arguable thesis. Point three needs a source.", priya);
-        submit(connection, outline, ava, daysFromNow(-2), true, "essay-outline.txt");
+        graded(connection, submit(connection, outline, felix, daysFromNow(-4), false, "outline.txt"),
+                "9", "A clear, arguable thesis. Point three needs a source.", savyata);
+        submit(connection, outline, aarav, daysFromNow(-2), true, "essay-outline.txt");
 
-        assignment(connection, eng110, priya, "Final essay",
+        assignment(connection, eng110, savyata, "Final essay",
                 "A 2,000-word argumentative essay developed from your outline.", daysFromNow(14), "100",
                 LatePolicy.NO_LATE, null);
 
         // ----- Announcements ---------------------------------------------------------------
-        announcementDao.insert(connection, cs101, priya, "Welcome to CS 101",
+        announcementDao.insert(connection, cs101, savyata, "Welcome to CS 101",
                 "Welcome! Please read the syllabus under Materials and install the JDK before our first lab.");
-        announcementDao.insert(connection, cs101, priya, "Lab 2 is now open for late submissions",
+        announcementDao.insert(connection, cs101, savyata, "Lab 2 is now open for late submissions",
                 "The deadline has passed, but you can still submit Lab 2. Late work is marked late.");
-        announcementDao.insert(connection, math201, daniel, "Office hours this week",
+        announcementDao.insert(connection, math201, bidhan, "Office hours this week",
                 "Office hours move to Thursday 3–5 pm this week only.");
-        announcementDao.insert(connection, eng110, priya, "Peer review next class",
+        announcementDao.insert(connection, eng110, savyata, "Peer review next class",
                 "Bring a printed copy of your outline for peer review.");
 
         System.out.println("Created administrator account id " + admin + ".");
@@ -310,12 +310,12 @@ public final class DemoDataSeeder {
 
     private static void printCredentials() {
         System.out.println();
-        System.out.println("Demo accounts (development only - fictional people):");
-        System.out.println("  Administrator  admin@inlearn.test                 " + ADMIN_PASSWORD);
-        System.out.println("  Instructor     priya.raman@inlearn.test           " + INSTRUCTOR_PASSWORD);
-        System.out.println("  Instructor     daniel.okafor@inlearn.test         " + INSTRUCTOR_PASSWORD);
-        System.out.println("  Students       maya.chen@student.inlearn.test     " + STUDENT_PASSWORD);
-        System.out.println("                 (also liam.rossi, sofia.haddad, noah.kim, ava.johnson, ethan.patel"
-                + " @student.inlearn.test)");
+        System.out.println("Demo accounts (development only):");
+        System.out.println("  Administrator  admin@inlearn.test                       " + ADMIN_PASSWORD);
+        System.out.println("  Instructor     savyata.ghimire@inlearn.test             " + INSTRUCTOR_PASSWORD);
+        System.out.println("  Instructor     bidhan.thapa@inlearn.test                " + INSTRUCTOR_PASSWORD);
+        System.out.println("  Students       krishna.bashyal@student.inlearn.test     " + STUDENT_PASSWORD);
+        System.out.println("                 (also felix.montalfu, vikas.saahil, surakshya.neupane, aarav.karki,"
+                + " prisha.adhikari @student.inlearn.test)");
     }
 }
