@@ -10,7 +10,7 @@ InLearn is a JavaFX desktop learning management system for colleges and universi
 
 **Author:** Swayam Shakya ([@RippedPaper](https://github.com/RippedPaper)) · **License:** [MIT](LICENSE)
 
-![Student gradebook in dark mode](docs/screenshots/student-grades-dark.png)
+![Instructor dashboard](docs/screenshots/06-instructor-dashboard.png)
 
 ## Features
 
@@ -24,10 +24,57 @@ InLearn is a JavaFX desktop learning management system for colleges and universi
 - **Light, dark and system themes** — switch instantly without losing what you typed; each user's choice is saved.
 - **Reliable by design** — background tasks keep the window responsive, transactions keep data consistent, uploads never destroy a previous valid submission, and database outages show a "Try again" action.
 
-| | |
+## Screenshots
+
+All screenshots come from the built-in demo data (`exec:java@seed-demo`).
+
+### Sign in
+
+![Sign-in screen](docs/screenshots/01-sign-in.png)
+
+### Administrator — Swayam Shakya
+
+| Dashboard | Users |
 |---|---|
-| ![Admin dashboard](docs/screenshots/admin-dashboard-light.png) | ![Grading in dark mode](docs/screenshots/grading-dark.png) |
-| ![Submission receipt](docs/screenshots/submission-receipt.png) | ![Sign in](docs/screenshots/sign-in.png) |
+| ![Administrator dashboard](docs/screenshots/02-admin-dashboard.png) | ![User management](docs/screenshots/03-admin-users.png) |
+| **Courses** | **Enrollments** |
+| ![Course management](docs/screenshots/04-admin-courses.png) | ![Enrollment management](docs/screenshots/05-admin-enrollments.png) |
+
+### Instructor — Dr. Savyata Ghimire
+
+| Dashboard | Course materials |
+|---|---|
+| ![Instructor dashboard](docs/screenshots/06-instructor-dashboard.png) | ![Course materials](docs/screenshots/07-instructor-materials.png) |
+| **Assignments** | **Grading (dark mode)** |
+| ![Assignments](docs/screenshots/08-instructor-assignments.png) | ![Grading a submission in dark mode](docs/screenshots/09-grading-dark.png) |
+| **Course gradebook with CSV export** | |
+| ![Course gradebook](docs/screenshots/10-instructor-gradebook.png) | |
+
+### Student — Krishna Bashyal and Surakshya Neupane
+
+| Dashboard | Course assignments |
+|---|---|
+| ![Student dashboard](docs/screenshots/11-student-dashboard.png) | ![Student assignments](docs/screenshots/12-student-assignments.png) |
+| **Submitting work** | **Submission receipt** |
+| ![Choosing a file to submit](docs/screenshots/13-assignment-submit.png) | ![Submission receipt](docs/screenshots/14-submission-receipt.png) |
+| **Grades** | **Grades (dark mode)** |
+| ![Student grades](docs/screenshots/15-student-grades.png) | ![Student grades in dark mode](docs/screenshots/16-student-grades-dark.png) |
+| **Profile and appearance (dark mode)** | |
+| ![Profile and appearance settings](docs/screenshots/17-profile-appearance-dark.png) | |
+
+## Quick start
+
+1. Install **JDK 25** and **MySQL 8.4** (Maven is not needed — the project includes the Maven Wrapper).
+2. Create the database: edit the two `CHANGE_ME` passwords in `database/01_create_database.sql`, then run `01_create_database.sql` and `02_schema.sql` (§2).
+3. Copy `config/application.example.properties` to `config/application.properties` and set `db.password` (§3).
+4. Load the demo data and start the app (§4–5):
+   ```bash
+   ./mvnw -q compile exec:java@seed-demo      # Windows: mvnw.cmd -q compile exec:java@seed-demo
+   ./mvnw javafx:run                          # Windows: mvnw.cmd javafx:run
+   ```
+5. Sign in as `admin@inlearn.test` / `Admin#2026`.
+
+Using **Visual Studio Code**? Follow the step-by-step guide in [§5.2](#52-visual-studio-code-step-by-step).
 
 ---
 
@@ -60,13 +107,16 @@ InLearn is a JavaFX desktop learning management system for colleges and universi
 | Component | Version | Notes |
 |---|---|---|
 | JDK | **25 (LTS)** or newer | JavaFX 25 requires JDK 23+; the build enforces 25+. Any vendor works (Temurin, Oracle, Zulu, Liberica). |
-| Maven | **3.9.x** or newer | Downloads JavaFX and all libraries. |
+| Maven | not required | The included Maven Wrapper (`mvnw` / `mvnw.cmd`) downloads Maven 3.9.11 on first use. An installed Maven 3.9+ works too. |
 | MySQL Server | **8.4 LTS** (also works with 8.0 and 9.x) | `utf8mb4`, InnoDB, CHECK constraints (8.0.16+). |
+| Visual Studio Code (optional) | current | With the **Extension Pack for Java**; see §5.2. |
 | Scene Builder (optional) | 24 or newer | Only for editing layouts visually. |
 
 Pinned library versions (see `pom.xml`): JavaFX **25.0.2**, MySQL Connector/J **9.5.0**, Bouncy Castle `bcprov-jdk18on` **1.81** (bcrypt), JUnit Jupiter **5.13.4**.
 
-You do **not** need to install JavaFX separately — Maven downloads the correct JavaFX build for your operating system.
+You do **not** need to install JavaFX or Maven separately — the wrapper downloads Maven, and Maven downloads the correct JavaFX build for your operating system. The first build needs an internet connection.
+
+**About the commands in this README:** they are written as `./mvnw …` for macOS and Linux. On Windows use `mvnw.cmd …` instead (in PowerShell: `.\mvnw.cmd …`). If you have Maven installed, plain `mvn …` works everywhere.
 
 ## 2. Database setup
 
@@ -81,7 +131,7 @@ You do **not** need to install JavaFX separately — Maven downloads the correct
    mysql -u root -p inlearn < database/02_schema.sql
    ```
 
-MySQL Workbench users can open and run the same two scripts (select the `inlearn` schema before running the second).
+**With MySQL Workbench instead of a terminal:** connect as `root`, choose **File → Open SQL Script…**, open `01_create_database.sql`, replace the two `CHANGE_ME` values and click the lightning-bolt **Execute** button. In the **Schemas** panel click refresh, right-click **inlearn → Set as Default Schema**, then open and execute `02_schema.sql`. You should see 8 tables under `inlearn`.
 
 To start over in development: `database/99_drop_tables_development_only.sql`, then `02_schema.sql` again.
 
@@ -113,38 +163,77 @@ InLearn has no public registration and **no built-in default credentials**. Choo
 
 **A. A real installation — create the first administrator interactively:**
 ```bash
-mvn -q compile exec:java@create-admin
+./mvnw -q compile exec:java@create-admin
 ```
 
-**B. Development — load fictional demo data** (only into an empty database; refuses to run when `app.environment=production`):
+**B. Development — load sample demo data** (only into an empty database; refuses to run when `app.environment=production`):
 ```bash
-mvn -q compile exec:java@seed-demo
+./mvnw -q compile exec:java@seed-demo
 # wipe ALL existing InLearn data first and reseed:
-mvn -q compile exec:java@seed-demo -Dexec.args="--reset"
+./mvnw -q compile exec:java@seed-demo "-Dexec.args=--reset"
 ```
 
 The seeder hashes passwords with the application's own bcrypt utility and creates 1 administrator, 2 instructors, 6 students, 3 courses, materials, announcements, upcoming and overdue assignments, and on-time, late and graded submissions. Deadlines are relative to when you run it.
 
-| Role | Email | Password (demo only) |
-|---|---|---|
-| Administrator | `admin@inlearn.test` | `Admin#2026` |
-| Instructor | `priya.raman@inlearn.test` | `Teach#2026` |
-| Instructor | `daniel.okafor@inlearn.test` | `Teach#2026` |
-| Students | `maya.chen@student.inlearn.test`, `liam.rossi@…`, `sofia.haddad@…`, `noah.kim@…`, `ava.johnson@…`, `ethan.patel@…` (all `@student.inlearn.test`) | `Learn#2026` |
+| Role | Name | Email | Password (demo only) |
+|---|---|---|---|
+| Administrator | Swayam Shakya | `admin@inlearn.test` | `Admin#2026` |
+| Instructor | Dr. Savyata Ghimire (CS 101, ENG 110) | `savyata.ghimire@inlearn.test` | `Teach#2026` |
+| Instructor | Prof. Bidhan Thapa (MATH 201) | `bidhan.thapa@inlearn.test` | `Teach#2026` |
+| Student | Krishna Bashyal | `krishna.bashyal@student.inlearn.test` | `Learn#2026` |
+| Student | Felix Montalfu | `felix.montalfu@student.inlearn.test` | `Learn#2026` |
+| Student | Vikas Saahil | `vikas.saahil@student.inlearn.test` | `Learn#2026` |
+| Student | Surakshya Neupane | `surakshya.neupane@student.inlearn.test` | `Learn#2026` |
+| Student | Aarav Karki | `aarav.karki@student.inlearn.test` | `Learn#2026` |
+| Student | Prisha Adhikari | `prisha.adhikari@student.inlearn.test` | `Learn#2026` |
+
+Good accounts to explore: **Krishna Bashyal** has graded work and grades in three courses; **Surakshya Neupane** has overdue work and an open project to submit; **Dr. Savyata Ghimire** has submissions waiting to be graded.
 
 ## 5. Running InLearn
 
+### 5.1 Command line
+
 ```bash
-mvn javafx:run
+./mvnw javafx:run          # Windows: mvnw.cmd javafx:run
 ```
 
-Run Maven from the project folder so the default `config/application.properties` is found.
+Run it from the project folder so the default `config/application.properties` is found. The first run downloads Maven, JavaFX and the libraries (a few minutes); later runs start in seconds.
+
+### 5.2 Visual Studio Code (step by step)
+
+The project includes ready-made VS Code settings (`.vscode/`): one-click tasks for running the app, loading demo data and running tests, plus a Run/Debug configuration.
+
+1. **Install the tools** (once):
+   - **JDK 25** — for example Eclipse Temurin 25 from adoptium.net. On Windows, tick **"Set JAVA_HOME variable"** in the installer.
+   - **MySQL Server 8.4** — the MySQL Installer on Windows can add **MySQL Workbench** too. Remember the root password you choose.
+   - **Visual Studio Code** from code.visualstudio.com.
+2. **Open the project:** in VS Code choose **File → Open Folder…** and select the `InLearn` folder (the one that contains `pom.xml`). If asked, click **Yes, I trust the authors**.
+3. **Install the Java extensions:** VS Code shows *"Do you want to install the recommended extensions?"* → **Install** (this is the **Extension Pack for Java**). Wait until the status bar says the Java project is ready.
+4. **Check Java:** open **Terminal → New Terminal** and run `java -version`. It must say 25. If it shows another version, set `JAVA_HOME` to the JDK 25 folder and restart VS Code.
+5. **Create the database** (once) — follow §2 in a terminal or with MySQL Workbench: edit the two `CHANGE_ME` passwords in `database/01_create_database.sql`, run it, then run `database/02_schema.sql` against the `inlearn` database.
+6. **Configure InLearn** (once): in the Explorer, right-click `config/application.example.properties` → **Copy**, then right-click the `config` folder → **Paste**, and rename the copy to `application.properties`. Open it and set `db.password` to the password you chose for `inlearn_app`. Save.
+7. **Load the demo data** (once): **Terminal → Run Task… → InLearn: Load demo data**. The terminal ends by listing the demo accounts.
+8. **Start InLearn:** **Terminal → Run Task… → InLearn: Run the app** (or press **Ctrl+Shift+B** / **Cmd+Shift+B**). The InLearn window opens.
+9. **Explore:** sign in as `admin@inlearn.test` / `Admin#2026`, then sign out and try `savyata.ghimire@inlearn.test` / `Teach#2026` (instructor) and `krishna.bashyal@student.inlearn.test` / `Learn#2026` (student). Close the window to stop the app.
+
+Other tasks under **Terminal → Run Task…**:
+
+| Task | What it does |
+|---|---|
+| InLearn: Run the app | Starts InLearn (`mvnw javafx:run`) |
+| InLearn: Load demo data | Fills an **empty** database with the demo accounts and courses |
+| InLearn: Reset and reload demo data | **Deletes all InLearn data**, then reloads the demo |
+| InLearn: Create first administrator | Prompts in the terminal for a real administrator account |
+| InLearn: Run unit tests | Runs the tests that don't need a database |
+| InLearn: Build runnable jar | Creates `target/inlearn-1.0.0-all.jar` |
+
+**Debugging:** open the **Run and Debug** view and start **"InLearn (run or debug)"** to set breakpoints in the code. The tasks above remain the simplest way to just run the app.
 
 ## 6. Running the tests
 
 ```bash
-mvn test       # unit tests (no database needed)
-mvn verify     # unit tests + JDBC integration tests against inlearn_test
+./mvnw test       # unit tests (no database needed)
+./mvnw verify     # unit tests + JDBC integration tests against inlearn_test
 ```
 
 Integration tests (`*IT.java`) need the isolated test database. Configure it in one of these ways:
@@ -152,7 +241,7 @@ Integration tests (`*IT.java`) need the isolated test database. Configure it in 
 ```bash
 cp config/test-database.example.properties config/test-database.properties   # then edit the password
 # or
-mvn verify -Dinlearn.test.db.password=yourTestPassword
+./mvnw verify -Dinlearn.test.db.password=yourTestPassword
 # or environment variables INLEARN_TEST_DB_URL / INLEARN_TEST_DB_USERNAME / INLEARN_TEST_DB_PASSWORD
 ```
 
@@ -165,7 +254,7 @@ A manual checklist for the JavaFX workflows is in [`docs/MANUAL_TEST_CHECKLIST.m
 ## 7. Packaging
 
 ```bash
-mvn package
+./mvnw package
 java --enable-native-access=ALL-UNNAMED -jar target/inlearn-1.0.0-all.jar
 ```
 
@@ -409,26 +498,36 @@ How it's built: `components.css` styles every control using named colours like `
 | "The database named in db.url doesn't exist yet" / "tables haven't been created" | Run `database/01_create_database.sql` and `database/02_schema.sql`. |
 | `Public Key Retrieval is not allowed` | Keep `allowPublicKeyRetrieval=true` for local servers without TLS, or enable TLS on the server. |
 | `Your password does not satisfy the current policy requirements` when running 01 | MySQL's password validation is on; choose a longer, mixed password. |
-| "Error: JavaFX runtime components are missing" | Start with `mvn javafx:run` or the `-all.jar`, not by running `InLearnApp` from a plain classpath. |
-| Maven enforcer: "requires JDK 25" | Install JDK 25 and point `JAVA_HOME` at it (`mvn -v` shows which JDK Maven uses). |
-| Warnings about `System::load` / native access | Harmless; `mvn javafx:run` and the documented `java` command already pass `--enable-native-access`. |
+| "Error: JavaFX runtime components are missing" | Start with `./mvnw javafx:run`, the VS Code task, the "InLearn (run or debug)" launch configuration (main class `com.inlearn.Launcher`) or the `-all.jar` — not by running `InLearnApp` directly. |
+| Maven enforcer: "requires JDK 25" | Install JDK 25 and point `JAVA_HOME` at it (`./mvnw -v` shows which JDK Maven uses). |
+| Warnings about `System::load` / native access | Harmless; `./mvnw javafx:run` and the documented `java` command already pass `--enable-native-access`. |
 | A file is "missing from InLearn's storage folder" | Check `storage.directory`; on shared deployments make sure the share is connected on this computer. |
 | Integration tests are skipped | Configure `config/test-database.properties` (see §6). |
-| No first account | Run `mvn -q compile exec:java@create-admin`. |
+| No first account | Run `./mvnw -q compile exec:java@create-admin` (or the VS Code task **InLearn: Create first administrator**). |
+| `./mvnw: Permission denied` (macOS/Linux) | Run `chmod +x mvnw` once. |
+| `The JAVA_HOME environment variable is not defined correctly` | Point `JAVA_HOME` at the JDK 25 folder (not its `bin` folder), then open a new terminal or restart VS Code. |
+| VS Code: tasks don't appear | Make sure you opened the folder that contains `pom.xml` (File → Open Folder), not a parent folder. |
 
 Logs are written to `logging.directory` (`inlearn-0.log`, rotated).
 
 ## 18. Publishing to GitHub
 
-This folder is already a Git repository on the `main` branch. To publish it under your account:
+This folder is already a Git repository on the `main` branch, with its history.
 
-1. On GitHub, create an **empty** repository named `InLearn` under `RippedPaper` (no README, license or .gitignore — they are already here).
-2. From this folder:
-   ```bash
-   git remote add origin https://github.com/RippedPaper/InLearn.git
-   git push -u origin main
-   ```
-3. The **CI** workflow (`.github/workflows/ci.yml`) then runs automatically: it starts MySQL 8.4, builds with JDK 25, runs all unit and integration tests and uploads the runnable Linux jar as a build artifact.
+**With GitHub Desktop (no terminal):**
+
+1. Install GitHub Desktop from desktop.github.com and sign in as **RippedPaper**.
+2. **File → Add local repository…** → choose this `InLearn` folder (the one containing `README.md`) → **Add repository**.
+3. Click **Publish repository**, keep the name `InLearn`, untick **Keep this code private** if it should be public, and click **Publish repository**.
+
+**With the terminal:** create an **empty** repository named `InLearn` on GitHub (no README, license or .gitignore), then:
+
+```bash
+git remote add origin https://github.com/RippedPaper/InLearn.git
+git push -u origin main
+```
+
+After publishing, the **CI** workflow (`.github/workflows/ci.yml`) runs automatically on GitHub: it starts MySQL 8.4, builds with JDK 25, runs all unit and integration tests and uploads the runnable Linux jar as a build artifact (see the **Actions** tab).
 
 ## 19. Author and license
 

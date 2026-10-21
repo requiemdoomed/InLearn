@@ -16,7 +16,11 @@ logs/
 # IDE and OS files
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 .settings/
 .project
 .classpath

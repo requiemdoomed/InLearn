@@ -4,11 +4,11 @@ Thanks for your interest in improving InLearn!
 
 ## Getting set up
 
-Follow the README sections 1–5 to install JDK 25, Maven and MySQL, create the databases and run the app. Load demo data with `mvn -q compile exec:java@seed-demo`.
+Follow the README sections 1–5 to install JDK 25 and MySQL (Maven comes with the project as `mvnw`), create the databases and run the app. Load demo data with `./mvnw -q compile exec:java@seed-demo` (Windows: `mvnw.cmd …`).
 
 ## Before opening a pull request
 
-1. Run `mvn verify` with a configured `inlearn_test` database (README §6). All tests must pass.
+1. Run `./mvnw verify` with a configured `inlearn_test` database (README §6). All tests must pass.
 2. Keep the layers separate: SQL only in `dao`, rules and permission checks only in `service`, screen logic only in `ui`.
 3. Every protected service method must call `AuthorizationService` — hidden buttons are not security.
 4. User-facing errors are `InLearnException` subclasses with plain-language messages; never show SQL or stack traces.

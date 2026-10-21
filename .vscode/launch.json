@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "InLearn (run or debug)",
+      "request": "launch",
+      "mainClass": "com.inlearn.Launcher",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "--enable-native-access=ALL-UNNAMED",
+      "console": "integratedTerminal"
+    }
+  ]
+}

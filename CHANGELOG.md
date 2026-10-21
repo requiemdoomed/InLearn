@@ -11,3 +11,6 @@ First release.
 - Light, dark and system themes saved per user.
 - MySQL schema, development demo-data seeder, first-administrator tool.
 - Unit tests and JDBC integration tests; GitHub Actions CI.
+- Maven Wrapper (`mvnw`, `mvnw.cmd`) so Maven doesn't need to be installed.
+- Visual Studio Code setup: recommended extensions, one-click tasks and a Run/Debug configuration.
+- README screenshot gallery covering every role.
