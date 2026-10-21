@@ -1,10 +1,10 @@
 # InLearn — Learning Management System
 
-[![CI](https://github.com/RippedPaper/InLearn/actions/workflows/ci.yml/badge.svg)](https://github.com/RippedPaper/InLearn/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
-![Java 25](https://img.shields.io/badge/Java-25-blue)
-![JavaFX 25](https://img.shields.io/badge/JavaFX-25-blue)
-![MySQL 8.4](https://img.shields.io/badge/MySQL-8.4-blue)
+[![License: MIT](docs/badges/license-mit.svg)](LICENSE)
+![Java 25](docs/badges/java-25.svg)
+![JavaFX 25](docs/badges/javafx-25.svg)
+![MySQL 8.4](docs/badges/mysql-8.4.svg)
+![Windows, macOS and Linux](docs/badges/platforms.svg)
 
 InLearn is a JavaFX desktop learning management system for colleges and universities. Administrators manage accounts, courses and enrollments; instructors share materials, post announcements, create assignments and grade submissions; students submit work and follow their grades — all stored in MySQL.
 
