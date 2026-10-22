@@ -510,27 +510,6 @@ How it's built: `components.css` styles every control using named colours like `
 
 Logs are written to `logging.directory` (`inlearn-0.log`, rotated).
 
-## 18. Publishing to GitHub
-
-This folder is already a Git repository on the `main` branch, with its history.
-
-**With GitHub Desktop (no terminal):**
-
-1. Install GitHub Desktop from desktop.github.com and sign in as **RippedPaper**.
-2. **File → Add local repository…** → choose this `InLearn` folder (the one containing `README.md`) → **Add repository**.
-3. Click **Publish repository**, keep the name `InLearn`, untick **Keep this code private** if it should be public, and click **Publish repository**.
-
-**With the terminal:** create an **empty** repository named `InLearn` on GitHub (no README, license or .gitignore), then:
-
-```bash
-git remote add origin https://github.com/RippedPaper/InLearn.git
-git push -u origin main
-```
-
-After publishing, the **CI** workflow (`.github/workflows/ci.yml`) runs automatically on GitHub: it starts MySQL 8.4, builds with JDK 25, runs all unit and integration tests and uploads the runnable Linux jar as a build artifact (see the **Actions** tab).
-
-## 19. Author and license
-
 Created by **Swayam Shakya** ([@RippedPaper](https://github.com/RippedPaper)).
 
 Released under the [MIT License](LICENSE) — © 2026 Swayam Shakya (RippedPaper). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
