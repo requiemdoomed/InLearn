@@ -510,6 +510,6 @@ How it's built: `components.css` styles every control using named colours like `
 
 Logs are written to `logging.directory` (`inlearn-0.log`, rotated).
 
-Created by **Swayam Shakya** ([@RippedPaper](https://github.com/RippedPaper)).
+Created by **Swayam Shakya** 
 
 Released under the [MIT License](LICENSE) — © 2026 Swayam Shakya (RippedPaper). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
