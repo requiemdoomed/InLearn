@@ -78,30 +78,6 @@ Using **Visual Studio Code**? Follow the step-by-step guide in [§5.2](#52-visua
 
 ---
 
-## Contents
-
-1. [Prerequisites](#1-prerequisites)
-2. [Database setup](#2-database-setup)
-3. [Configuration](#3-configuration)
-4. [First administrator or demo data](#4-first-administrator-or-demo-data)
-5. [Running InLearn](#5-running-inlearn)
-6. [Running the tests](#6-running-the-tests)
-7. [Packaging](#7-packaging)
-8. [Opening the FXML files in Scene Builder](#8-opening-the-fxml-files-in-scene-builder)
-9. [Project structure and architecture](#9-project-structure-and-architecture)
-10. [Roles and permissions](#10-roles-and-permissions)
-11. [Business rules](#11-business-rules)
-12. [Database design](#12-database-design)
-13. [File storage](#13-file-storage)
-14. [Appearance: light, dark and system themes](#14-appearance-light-dark-and-system-themes)
-15. [Keyboard shortcuts](#15-keyboard-shortcuts)
-16. [Deployment assumptions and known limitations](#16-deployment-assumptions-and-known-limitations)
-17. [Troubleshooting](#17-troubleshooting)
-18. [Publishing to GitHub](#18-publishing-to-github)
-19. [Author and license](#19-author-and-license)
-
----
-
 ## 1. Prerequisites
 
 | Component | Version | Notes |
