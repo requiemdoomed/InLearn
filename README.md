@@ -488,4 +488,4 @@ Logs are written to `logging.directory` (`inlearn-0.log`, rotated).
 
 Created by **Swayam Shakya** 
 
-Released under the [MIT License](LICENSE) — © 2026 Swayam Shakya (RippedPaper). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+Released under the [MIT License](LICENSE) — © 2026 Swayam Shakya. Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
