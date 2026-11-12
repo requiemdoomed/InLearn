@@ -8,7 +8,7 @@
 
 InLearn is a JavaFX desktop learning management system for colleges and universities. Administrators manage accounts, courses and enrollments; instructors share materials, post announcements, create assignments and grade submissions; students submit work and follow their grades — all stored in MySQL.
 
-**Author:** Swayam Shakya ([@RippedPaper](https://github.com/RippedPaper)) · **License:** [MIT](LICENSE)
+**Author:** [Swayam Shakya](https://github.com/requiemdoomed)) · **License:** [MIT](LICENSE)
 
 ![Instructor dashboard](docs/screenshots/06-instructor-dashboard.png)
 
