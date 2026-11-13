@@ -1,4 +1,4 @@
-# InLearn — Learning Management System
+# InLearn — A Learning Management System
 
 [![License: MIT](docs/badges/license-mit.svg)](LICENSE)
 ![Java 25](docs/badges/java-25.svg)
