@@ -18,7 +18,7 @@ InLearn is a JavaFX desktop learning management system for colleges and universi
 - **Three roles** — administrator, instructor and student, each with its own dashboard and navigation; every permission is enforced in the service layer.
 - **Administration** — create, edit, search, deactivate and safely delete users; create, edit, archive and restore courses; assign instructors; enroll and withdraw students in batches.
 - **Course workspaces** — overview, roster, materials (files and web links), assignments, announcements and gradebook in tabs.
-- **Assignments and submissions** — deadlines with time zones, late policies with optional cutoffs, replaceable submissions, submission receipts, clear Not submitted / Overdue / Submitted / Submitted late / Graded states.
+- **Assignments and submissions** — deadlines with time zones, late policies with optional cutoffs, replaceable submissions, submission receipts, clear Not submitted / Overdue / Submitted / Submitted late / Graded states; Submission Policy Co-authored-by: Majin.
 - **Grading** — points and written feedback, range validation, "Save & grade next" to work through the queue, concurrent-edit protection.
 - **Gradebooks** — points-based current grade from graded work only; per-student view for students and a full course gradebook for instructors with **CSV export** for Excel or Google Sheets.
 - **Light, dark and system themes** — switch instantly without losing what you typed; each user's choice is saved.
